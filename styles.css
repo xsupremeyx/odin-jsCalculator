@@ -1,3 +1,33 @@
-p{
+h1{
     border: 1px solid black;
+    margin: 20px;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
 }
+
+body{
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+#calculator-body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 45vh;
+    height: 65vh;
+    min-width: 250px;
+    min-height: 350px;
+}
+
