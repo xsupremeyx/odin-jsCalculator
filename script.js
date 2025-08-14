@@ -18,3 +18,22 @@ function operate(opr1,opr2,operator){
     else if(operator === "/") return divide(opr1,opr2);
     else return NaN;
 }
+
+function populateDisplay(bttn,display){
+    const val = bttn.textContent;
+    display.value += val;
+}
+
+function checkClick(buttons,display){
+    buttons.forEach(element => {
+        element.addEventListener("click", (event) =>{
+            const bttn = event.target;
+            populateDisplay(bttn,display);
+        });
+    });
+}
+
+const buttons = document.querySelectorAll(".button");
+const display = document.querySelector("#input");
+
+checkClick(buttons,display);
