@@ -20,8 +20,23 @@ function operate(opr1,opr2,operator){
 }
 
 function populateDisplay(bttn,display){
-    const val = bttn.textContent;
-    display.value += val;
+    if(bttn.id === 'clear'){
+        display.value = '';
+    }
+    else if( bttn.id === 'backspace'){
+        display.value = display.value.slice(0,-1);
+    }
+    else if(["multiply","minus","add","divide"].includes(bttn.id)){
+        // Operator here
+    }
+    else if(bttn.id === "submit"){
+        //Submit here
+    }
+    else{
+        const val = bttn.textContent;
+        display.value += val;
+    }
+    
 }
 
 function checkClick(buttons,display){
