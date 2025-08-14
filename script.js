@@ -25,6 +25,7 @@ function populateDisplay(bttn,display){
     }
     else if( bttn.id === 'backspace'){
         display.value = display.value.slice(0,-1);
+
     }
     else if(["multiply","minus","add","divide"].includes(bttn.id)){
         // Operator here
@@ -35,6 +36,11 @@ function populateDisplay(bttn,display){
     else{
         const val = bttn.textContent;
         display.value += val;
+        // display.scrollLeft = display.scrollWidth; //replaced by scroll animation
+        display.scrollTo({
+            left: display.scrollWidth,
+            behavior: "smooth"
+        });
     }
     
 }
