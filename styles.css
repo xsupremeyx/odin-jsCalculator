@@ -127,3 +127,8 @@ h1{
 .active{
     border: 2px solid white;
 }
+
+.disabled{
+    background-color: #808080;
+    cursor: not-allowed;
+}

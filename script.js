@@ -1,26 +1,39 @@
 let a = 0;
 let b;
 flag = 0; 
+disabledAll = 0;
+decimal = 0;
 let crntbttn;
 
 //flag = 0
 //flag = 1 (operator pressed)
 //flag = 2 (second operand in process)
 
-//problem: give operand, press +, then type operand 2, then pressing - would minus the op1 and p2 instead of adding it and using minus on next operation!
-//fixed!
+function roundTo(num, decimalPlaces) {
+    const factor = 10 ** decimalPlaces;
+    return Math.round(num * factor) / factor;
+}
+
+function disableBttns(buttons){
+    buttons.forEach(bttn => {
+        bttn.classList.add("disabled");
+    });
+}
 
 function add(a,b){
-    return a+b;
+    return roundTo(a+b,5);
 }
 function sub(a,b){
-    return a-b;
+    return roundTo(a-b,5);
 }
 function multiply(a,b){
-    return a*b;
+    return roundTo(a*b,5);
 }
 function divide(a,b){
-    return a/b;
+    if(b === 0){
+        return Infinity;
+    }
+    return roundTo(a/b,5);
 }
 
 function getOutputContent(display){
@@ -43,16 +56,35 @@ function populateDisplay(buttons,bttn,display){
     if(bttn.id === 'clear'){
         display.value = '0';
         a = 0;
+        b = 0;
+        if(disabledAll){
+                buttons.forEach(bttn => {
+                bttn.classList.remove("disabled");
+                disabledAll = 0;
+            });
+        }
+        decimal = 0;
+        
+    }
+    else if(disabledAll){
+        return;
     }
 
     else if( bttn.id === 'backspace'){
         display.value = display.value.slice(0,-1);
         if(display.value === '') display.value = '0';
+        if(!display.value.includes(".") && decimal){
+            decimal = 0;
+            document.getElementById("decimal").classList.remove("disabled");
+        }
     }
 
     else if(["multiply","minus","add","divide"].includes(bttn.id)){
-        // Operator here
         if(flag === 2){
+            if((bttn.id === "decimal" && decimal === 0)||(display.value.includes("."))){
+                decimal = 1;
+                document.getElementById("decimal").classList.add("disabled");
+            }
             b = +getOutputContent(display);
             display.value = operate(a,b,crntbttn);
             b = 0;
@@ -60,23 +92,57 @@ function populateDisplay(buttons,bttn,display){
 
         resetOperatorActive(buttons);
         a = +getOutputContent(display);
+        if(a === Infinity || a === NaN){
+            disableBttns(buttons);
+            disabledAll = 1;
+            document.getElementById("clear").classList.remove("disabled");
+            return;
+        }
+        
         bttn.classList.add("active");
         flag = 1;
         crntbttn = bttn.id;
     }
     else if(bttn.id === "submit"){
-        //Submit here
+        if(flag === 2){
+            b = +getOutputContent(display);
+            display.value = operate(a,b,crntbttn);
+            b = 0;
+            a = +getOutputContent(display);
+            flag = 0;
+            if(a === Infinity || a === NaN){
+                disableBttns(buttons);
+                disabledAll = 1;
+                document.getElementById("clear").classList.remove("disabled");
+                return;
+            }
+        }
     }
-
     else{
         if(flag === 1){
             display.value = '';
             resetOperatorActive(buttons);
+            decimal = 0;
             flag = 2;
         }
+
+        if(bttn.id === "decimal"){
+            if(decimal && display.value.includes(".")){
+                return;
+            }
+            decimal = 1;
+            document.getElementById("decimal").classList.add("disabled");
+            const val = bttn.textContent;
+            display.value += val;
+            display.scrollTo({
+                left: display.scrollWidth,
+                behavior: "smooth"
+            });
+            return;
+        }
+
         const val = bttn.textContent;
         display.value += val;
-        // display.scrollLeft = display.scrollWidth; //replaced by scroll animation
         display.scrollTo({
             left: display.scrollWidth,
             behavior: "smooth"
