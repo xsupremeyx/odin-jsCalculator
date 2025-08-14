@@ -32,8 +32,8 @@ body{
     border-radius: 15px;
     width: 55vh;
     height: 75vh;
-    min-width: 250px;
-    min-height: 350px;
+    min-width: 440px;
+    min-height: 600px;
     gap: 10px;
     background-color: #4d4d4d;
 }
