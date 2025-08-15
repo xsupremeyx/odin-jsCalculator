@@ -167,6 +167,10 @@ function checkClick(buttons,display){
     });
 }
 
+function checkTheme(){
+    const themeBttns = document.querySelectorAll("")
+}
+
 
 
 const buttons = document.querySelectorAll(".button");
