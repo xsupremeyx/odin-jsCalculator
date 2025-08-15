@@ -167,11 +167,49 @@ function checkClick(buttons,display){
     });
 }
 
-function checkTheme(){
-    const themeBttns = document.querySelectorAll("")
+function checkTheme() {
+    const themeBttns = document.querySelectorAll(".themebttn");
+
+    themeBttns.forEach(bttn => {
+        bttn.addEventListener("click", event => {
+            const theme = event.target.id; // "original" or "panda"
+            applyTheme(theme);
+        });
+    });
 }
 
+function applyTheme(theme) {
+    const calcBody = document.getElementById("calculator-body");
+    const display = document.getElementById("input");
+    const buttons = document.querySelectorAll(".button");
+    const operators = document.querySelectorAll(".divide, .multiply, .minus, .add");
+    const specials = document.querySelectorAll(".submit, .backspace, .clear");
 
+    // Remove previous theme classes
+    calcBody.classList.remove("themeOriginal-bg", "themePanda-bg");
+    display.classList.remove("themeOriginal-input", "themePanda-input");
+    buttons.forEach(btn => btn.classList.remove("themeOriginal-button", "themePanda-button"));
+    operators.forEach(op => op.classList.remove("themeOriginal-operator", "themePanda-operator"));
+    specials.forEach(sp => sp.classList.remove("themeOriginal-special", "themePanda-special"));
+
+    // Apply the new theme
+    if (theme === "original") {
+        calcBody.classList.add("themeOriginal-bg");
+        display.classList.add("themeOriginal-input");
+        buttons.forEach(btn => btn.classList.add("themeOriginal-button"));
+        operators.forEach(op => op.classList.add("themeOriginal-operator"));
+        specials.forEach(sp => sp.classList.add("themeOriginal-special"));
+    } 
+    else if (theme === "panda") {
+        calcBody.classList.add("themePanda-bg");
+        display.classList.add("themePanda-input");
+        buttons.forEach(btn => btn.classList.add("themePanda-button"));
+        operators.forEach(op => op.classList.add("themePanda-operator"));
+        specials.forEach(sp => sp.classList.add("themePanda-special"));
+    }
+}
+
+checkTheme();
 
 const buttons = document.querySelectorAll(".button");
 const display = document.querySelector("#input");

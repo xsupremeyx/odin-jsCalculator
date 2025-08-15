@@ -97,8 +97,13 @@ h1{
     min-width: 560px;
     min-height: 740px;
     gap: 10px;
-    background-color: #4d4d4d;
 
+
+
+}
+
+.themeOriginal-bg{
+    background-color: #4d4d4d;
 }
 
 #iowindow{
@@ -117,7 +122,8 @@ h1{
     border: none;
     outline: none;
 
-    background-color: #d1e6a8;
+
+
     border-radius: 10px;
     padding: 10px;
 
@@ -131,6 +137,10 @@ h1{
     font-style: normal;
     font-size: 96px;
 
+}
+
+.themeOriginal-input{
+    background-color: #d1e6a8;
 }
 
 #buttonsbody{
@@ -152,10 +162,9 @@ h1{
 .button{
     flex: 1;
     cursor: pointer;
-    background-color: #808080;
-    border: 2px solid #808080;
+
+
     font-size: 72px;
-    color: white;
     border: none;
     outline: none;
     transition: background-color 0.15s ease;
@@ -164,16 +173,34 @@ h1{
     font-style: normal;
 }
 
+.themeOriginal-button{
+    background-color: #808080;
+    color: white;
+    border: 2px solid #808080;
+}
+
 .divide,.multiply,.minus,.add{
     background-color: #65c8cf;
     border: 2px solid #65c8cf;
 
 }
 
+.themeOriginal-operator{
+    background-color: #65c8cf;
+    border: 2px solid #65c8cf;
+    color: white;
+}
+
 .submit,.backspace,.clear{
     background-color: #ea5c5f;
     border: 2px solid #ea5c5f;
 
+}
+
+.themeOriginal-special{
+    background-color: #ea5c5f;
+    border: 2px solid #ea5c5f;
+    color: white;
 }
 
 
@@ -188,4 +215,75 @@ h1{
 .disabled{
     background-color: #271f1f;
     cursor: not-allowed;
+}
+
+/* Panda Theme */
+/* Panda Theme */
+#calculator-body.themePanda-bg {
+  background-color: purple; /* Main calculator body background */
+}
+
+/* Display */
+.themePanda-input {
+  background-color: #fff0f5; /* light lavender display */
+  color: #4d4d4d;
+}
+
+/* Default number buttons */
+.themePanda-button {
+  background-color: #ffb6c1; /* light pink */
+  color: #4d4d4d;
+  border: 2px solid #ffb6c1;
+}
+
+/* Operator buttons (+, -, ×, ÷) */
+.themePanda-operator {
+  background-color: #ff85a2; /* deeper pink */
+  border: 2px solid #ffc1cc;
+  color: #4d4d4d;
+}
+
+/* Special buttons (AC, backspace, =) */
+.themePanda-special {
+  background-color: #c12348; /* strong pink/red */
+  border: 2px solid #ff8ba7;
+  color: white;
+}
+
+/* Disabled state (decimal lock / Infinity / NaN) */
+.themePanda-button.disabled,
+.themePanda-operator.disabled,
+.themePanda-special.disabled {
+  background-color: grey !important;
+  border-color: grey !important;
+  color: black !important;
+  cursor: not-allowed;
+}
+
+/* Panda-specific hover states */
+.themePanda-bg .themePanda-button:hover:not(.disabled) {
+  background-color: #ff99aa;
+}
+.themePanda-bg .themePanda-operator:hover:not(.disabled) {
+  background-color: #ffadb9;
+}
+.themePanda-bg .themePanda-special:hover:not(.disabled) {
+  background-color: #ff6f91;
+}
+
+/* Panda-specific active states */
+.themePanda-bg .themePanda-button:active:not(.disabled) {
+  background-color: #ff7b89;
+}
+.themePanda-bg .themePanda-operator:active:not(.disabled) {
+  background-color: #ff94a4;
+}
+.themePanda-bg .themePanda-special:active:not(.disabled) {
+  background-color: #e75480;
+}
+
+.themePanda-bg .themePanda-operator.active {
+  border: 2px solid hotpink; /* deep purple border */
+  background-color: hotpink;  /* bright pink background */
+  color: white;
 }
