@@ -130,6 +130,7 @@ function populateDisplay(buttons,bttn,display){
             display.value = '';
             resetOperatorActive(buttons);
             decimal = 0;
+            document.getElementById("decimal").classList.remove("disabled");
             flag = 2;
         }
 

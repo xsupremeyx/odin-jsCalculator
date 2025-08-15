@@ -234,6 +234,7 @@ h1{
   background-color: #ffb6c1; /* light pink */
   color: #4d4d4d;
   border: 2px solid #ffb6c1;
+  border-radius: 25px;
 }
 
 /* Operator buttons (+, -, ×, ÷) */
@@ -255,7 +256,7 @@ h1{
 .themePanda-operator.disabled,
 .themePanda-special.disabled {
   background-color: grey !important;
-  border-color: grey !important;
+  border: 2px solid darkgrey !important;
   color: black !important;
   cursor: not-allowed;
 }
@@ -283,7 +284,7 @@ h1{
 }
 
 .themePanda-bg .themePanda-operator.active {
-  border: 2px solid hotpink; /* deep purple border */
-  background-color: hotpink;  /* bright pink background */
+  border: 2px solid white;
+  background-color: hotpink; 
   color: white;
-}
+} 
