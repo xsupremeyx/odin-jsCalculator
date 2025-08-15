@@ -218,20 +218,19 @@ h1{
 }
 
 /* Panda Theme */
-/* Panda Theme */
 #calculator-body.themePanda-bg {
-  background-color: purple; /* Main calculator body background */
+  background-color: purple;
 }
 
 /* Display */
 .themePanda-input {
-  background-color: #fff0f5; /* light lavender display */
+  background-color: #fff0f5; 
   color: #4d4d4d;
 }
 
 /* Default number buttons */
 .themePanda-button {
-  background-color: #ffb6c1; /* light pink */
+  background-color: #ffb6c1;
   color: #4d4d4d;
   border: 2px solid #ffb6c1;
   border-radius: 25px;
@@ -239,7 +238,7 @@ h1{
 
 /* Operator buttons (+, -, ×, ÷) */
 .themePanda-operator {
-  background-color: #ff85a2; /* deeper pink */
+  background-color: #ff85a2;
   border: 2px solid #ffc1cc;
   color: #4d4d4d;
 }
