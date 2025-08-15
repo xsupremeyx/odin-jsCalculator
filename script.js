@@ -65,6 +65,8 @@ function populateDisplay(buttons,bttn,display){
         }
         decimal = 0;
         document.getElementById("decimal").classList.remove("disabled");
+        flag = 0;
+        resetOperatorActive(buttons);
         
     }
     else if(disabledAll){
