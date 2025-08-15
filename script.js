@@ -64,6 +64,7 @@ function populateDisplay(buttons,bttn,display){
             });
         }
         decimal = 0;
+        document.getElementById("decimal").classList.remove("disabled");
         
     }
     else if(disabledAll){
@@ -73,7 +74,7 @@ function populateDisplay(buttons,bttn,display){
     else if( bttn.id === 'backspace'){
         display.value = display.value.slice(0,-1);
         if(display.value === '') display.value = '0';
-        if(!display.value.includes(".") && decimal){
+        if(!display.value.includes(".")){
             decimal = 0;
             document.getElementById("decimal").classList.remove("disabled");
         }
@@ -81,10 +82,6 @@ function populateDisplay(buttons,bttn,display){
 
     else if(["multiply","minus","add","divide"].includes(bttn.id)){
         if(flag === 2){
-            if((bttn.id === "decimal" && decimal === 0)||(display.value.includes("."))){
-                decimal = 1;
-                document.getElementById("decimal").classList.add("disabled");
-            }
             b = +getOutputContent(display);
             display.value = operate(a,b,crntbttn);
             b = 0;
@@ -92,7 +89,7 @@ function populateDisplay(buttons,bttn,display){
 
         resetOperatorActive(buttons);
         a = +getOutputContent(display);
-        if(a === Infinity || a === NaN){
+        if(a === Infinity || Number.isNaN(a)){
             disableBttns(buttons);
             disabledAll = 1;
             document.getElementById("clear").classList.remove("disabled");
@@ -102,7 +99,11 @@ function populateDisplay(buttons,bttn,display){
         bttn.classList.add("active");
         flag = 1;
         crntbttn = bttn.id;
+
+        decimal = display.value.includes('.') ? 1 : 0;
+        document.getElementById("decimal").classList.toggle("disabled", decimal === 1);
     }
+
     else if(bttn.id === "submit"){
         if(flag === 2){
             b = +getOutputContent(display);
@@ -110,7 +111,11 @@ function populateDisplay(buttons,bttn,display){
             b = 0;
             a = +getOutputContent(display);
             flag = 0;
-            if(a === Infinity || a === NaN){
+
+            decimal = display.value.includes('.') ? 1 : 0;
+            document.getElementById("decimal").classList.toggle("disabled", decimal === 1);
+
+            if(a === Infinity || Number.isNaN(a)){
                 disableBttns(buttons);
                 disabledAll = 1;
                 document.getElementById("clear").classList.remove("disabled");
@@ -127,7 +132,7 @@ function populateDisplay(buttons,bttn,display){
         }
 
         if(bttn.id === "decimal"){
-            if(decimal && display.value.includes(".")){
+            if(decimal){
                 return;
             }
             decimal = 1;
