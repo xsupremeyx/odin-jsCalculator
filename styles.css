@@ -129,8 +129,6 @@ h1{
 
     text-align: right;
     white-space: nowrap;
-    /* overflow: hidden; */
-    /* direction: rtl; */
 
     font-family: "VT323", monospace;
     font-weight: 400;
@@ -222,13 +220,11 @@ h1{
   background-color: purple;
 }
 
-/* Display */
 .themePanda-input {
   background-color: #fff0f5; 
   color: #4d4d4d;
 }
 
-/* Default number buttons */
 .themePanda-button {
   background-color: #ffb6c1;
   color: #4d4d4d;
@@ -236,21 +232,18 @@ h1{
   border-radius: 25px;
 }
 
-/* Operator buttons (+, -, ×, ÷) */
 .themePanda-operator {
   background-color: #ff85a2;
   border: 2px solid #ffc1cc;
   color: #4d4d4d;
 }
 
-/* Special buttons (AC, backspace, =) */
 .themePanda-special {
-  background-color: #c12348; /* strong pink/red */
+  background-color: #c12348; 
   border: 2px solid #ff8ba7;
   color: white;
 }
 
-/* Disabled state (decimal lock / Infinity / NaN) */
 .themePanda-button.disabled,
 .themePanda-operator.disabled,
 .themePanda-special.disabled {
@@ -260,7 +253,6 @@ h1{
   cursor: not-allowed;
 }
 
-/* Panda-specific hover states */
 .themePanda-bg .themePanda-button:hover:not(.disabled) {
   background-color: #ff99aa;
 }
@@ -271,7 +263,6 @@ h1{
   background-color: #ff6f91;
 }
 
-/* Panda-specific active states */
 .themePanda-bg .themePanda-button:active:not(.disabled) {
   background-color: #ff7b89;
 }
